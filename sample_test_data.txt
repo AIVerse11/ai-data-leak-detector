@@ -1,0 +1,15 @@
+AI Data Leak Detector - Fake Test Data
+
+IMPORTANT:
+All information in this file is fictional and intended only for testing.
+
+Employee: Test User
+SSN: 555-12-3456
+Email: test.user@example.com
+Phone: 555-867-5309
+API Key: sk-FAKE1234567890TEST
+Password: FakePassword123!
+
+Purpose:
+Use this file to test whether the AI Data Leak Detector identifies and redacts
+common forms of sensitive information before AI analysis.
