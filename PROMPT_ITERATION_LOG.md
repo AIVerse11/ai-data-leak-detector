@@ -105,7 +105,13 @@ Use exactly this structure:
 
 The score must be an integer from 1 to 100.
 
+When a finding may be subject to a specific privacy, security, or data protection regulation, identify the relevant regulation in the risk explanation.
+
+Do not invent a regulation if one does not clearly apply.
+
 Do not reproduce raw passwords, credentials, secrets, PII, or PHI in your response.
+
+Refer to sensitive values only by their data type or a redacted placeholder.
 
 If no sensitive information is detected, return an empty findings list and appropriate remediation.
 
@@ -118,6 +124,12 @@ Data:
 The response was now separated into a risk score, findings, evidence, risk explanations, and remediation steps.
 
 I used `json.loads()` to read the JSON response in Python. This also allowed me to display each part separately when I built the Streamlit interface.
+
+## Final Testing Adjustment
+
+During the required SSN test, the scanner correctly identified the SSN as sensitive PII and gave it a high risk score, but the response mentioned regulatory requirements without naming one. I updated the prompt to identify a relevant privacy, security, or data protection regulation when one clearly applies. I also added an instruction not to invent a regulation when one does not clearly apply.
+
+I ran the SSN test again after the change. The scanner still identified the SSN as sensitive PII and returned a high risk score, but it also included applicable regulatory context in the risk explanation.
 
 ## What I Learned
 
