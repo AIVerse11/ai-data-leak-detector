@@ -122,9 +122,9 @@ The real API key is not included in the repository.
 
 ## Prompt Changes
 
-The prompt changed as I worked through the project.
+## Prompt Changes
 
-The first version focused on getting a useful security report. The next version added instructions for redacted evidence and used locally redacted data instead of the original input. The prompt changed as I worked through the project.
+The prompt changed as I worked through the project.
 
 The first version focused on getting a useful security report. The next version added instructions for redacted evidence and used locally redacted data instead of the original input. The final version requires JSON so Python can work with individual parts of the response.
 
