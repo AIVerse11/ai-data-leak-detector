@@ -89,6 +89,19 @@ I also found false negatives. The first version of my SSN pattern did not detect
 
 An obfuscated email such as `test.user [at] example.com` is still not detected by the current email pattern. I left this as a documented limitation instead of making the pattern so broad that it could create more false positives.
 
+### Required Test Cases
+
+I also ran the finished project against the six required test cases:
+
+- Clean text with no sensitive information: returned a low risk score with no findings.
+- Fake SSN: identified as sensitive PII with a high risk score and applicable regulatory context.
+- Fake API key: identified as a credential/secret with recommendations for rotation and secrets management.
+- Medical information without an identifying number: recognized the health information from context.
+- ZIP code, birth date, and gender: identified the combined values as a re-identification risk.
+- Database connection string: identified multiple risks, including credentials and internal resource information.
+
+The SSN test initially identified the data correctly but did not name an applicable regulation. I updated the prompt and reran the test successfully. This change is documented in `PROMPT_ITERATION_LOG.md`.
+
 ## Input and Error Handling
 
 The project includes basic checks for problems that can happen while it is running.
@@ -111,7 +124,11 @@ The real API key is not included in the repository.
 
 The prompt changed as I worked through the project.
 
+The first version focused on getting a useful security report. The next version added instructions for redacted evidence and used locally redacted data instead of the original input. The prompt changed as I worked through the project.
+
 The first version focused on getting a useful security report. The next version added instructions for redacted evidence and used locally redacted data instead of the original input. The final version requires JSON so Python can work with individual parts of the response.
+
+During final testing, I also added instructions for the model to identify relevant privacy, security, or data protection regulations when they clearly apply, while telling it not to invent a regulation when one does not apply.
 
 The full prompt development notes are available in `PROMPT_ITERATION_LOG.md`.
 
